@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom styling for audio player */
+audio {
+  @apply bg-brand/20 rounded-lg w-full;
+}
+
+audio::-webkit-media-controls-panel {
+  @apply bg-brand/20;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  @apply text-white;
+}
+
+/* Custom styling for range inputs */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  @apply bg-brand/20 rounded-full outline-none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  @apply bg-brand hover:bg-brand-light active:bg-brand-dark rounded-full cursor-pointer transition-all;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(0.95);
+}
+
+/* WaveSurfer custom styling */
+.wavesurfer-region {
+  @apply bg-brand/20 !important;
+}
+
+.wavesurfer-handle {
+  @apply bg-brand !important;
+  width: 4px !important;
+}
+
+.wavesurfer-handle:hover {
+  @apply bg-brand-light !important;
+}
+
+wave {
+  height: 64px !important;
+  overflow: visible !important;
+}
+
+wave > wave {
+  height: 64px !important;
+  overflow: visible !important;
+}
+
+.wavesurfer-cursor {
+  width: 2px !important;
+  background-color: #fff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  input[type="range"]::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .wavesurfer-handle {
+    width: 6px !important;
+  }
+}
+
+.animate-vinyl-spin {
+  animation: spin var(--spin-duration) linear infinite;
+  animation-direction: var(--spin-direction);
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*:focus-visible {
+  @apply outline-none ring-2 ring-white/50 ring-offset-2 ring-offset-zinc-900;
+}
